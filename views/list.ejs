@@ -1,0 +1,38 @@
+<%- include("header"); -%>
+
+<div class="box" id="heading">
+  <h1><%= Listday%></h1>
+</div>
+
+<div class="box">
+  <% newWorkItem.forEach(function(item){%>
+  <form action="/delete" method="POST">
+    <div class="item">
+      <input
+        name="checkbox"
+        value="<%= item._id%>"
+        type="checkbox"
+        onchange="this.form.submit()"
+      />
+      <p><%= item.name%></p>
+    </div>
+     <input type="hidden" name ="listName" value="<%= Listday%>"></input>
+   
+  </form>
+  <% })%>
+
+  <form class="item" action="/" method="POST">
+    <div class="form-group col-sm-6">
+      <input
+        type="text"
+        class="form-control"
+        name="work"
+        placeholder="Add a Work"
+        autocomplete="off"
+      />
+    </div>
+
+    <button type="submit" name="list" value="<%= Listday%>" class="btn btn-primary">+</button>
+  </form>
+</div>
+<%- include("footer"); -%>
